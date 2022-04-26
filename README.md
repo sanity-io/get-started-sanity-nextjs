@@ -1,6 +1,7 @@
 # Get started with Sanity and Next.js
 
-This project contains a minimal Next.js starter project to list pets on a page. 
+This project contains a minimal Next.js starter project to list pets on a page. It is used in the [Getting started with Sanity](https://www.sanity.io/docs/getting-started) guide.
+
 
 ## Set up
 
