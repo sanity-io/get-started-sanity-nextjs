@@ -1,3 +1,5 @@
+import { createClient } from "next-sanity";
+
 export default function IndexPage({ pets }) {
   return (
     <>
@@ -33,21 +35,19 @@ export default function IndexPage({ pets }) {
   );
 }
 
+const client = createClient({
+  projectId: "licmfyay",
+  dataset: "production",
+  apiVersion: "2023-01-08",
+  useCdn: false,
+});
+
 export async function getStaticProps() {
-  const pets = [
-    /* {
-      _createdAt: "2022-03-08T09:28:00Z",
-      _id: "1f69c53d-418a-452f-849a-e92466bb9c75",
-      _rev: "xnBg0xhUDzo561jnWODd5e",
-      _type: "pet",
-      _updatedAt: "2022-03-08T09:28:00Z",
-      name: "Bamse"
-    } */
-  ];
+  const pets = await client.fetch(`*[_type == "pet"]`);
 
   return {
     props: {
-      pets
-    }
+      pets,
+    },
   };
 }
